@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.joanna.mobilnyportfel.AccountType">
+
+    <TableLayout
+        android:layout_width="400dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteY="50dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+
+            <Button
+                android:id="@+id/normaluser"
+                android:layout_width="147dp"
+                android:layout_height="150dp"
+                android:backgroundTint="@android:color/holo_blue_light"
+                android:text="normaluser"
+                tools:layout_editor_absoluteX="203dp" />
+
+            <Button
+                android:id="@+id/housewife"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:backgroundTint="@android:color/holo_orange_dark"
+                android:text="housewife"
+                tools:layout_editor_absoluteX="31dp"
+                tools:layout_editor_absoluteY="222dp" />
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/student"
+                android:layout_width="147dp"
+                android:layout_height="150dp"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:text="student"
+                tools:layout_editor_absoluteX="203dp" />
+            <Button
+            android:id="@+id/custom"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:backgroundTint="@android:color/holo_purple"
+            android:text="custom"
+            tools:layout_editor_absoluteX="203dp" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</android.support.constraint.ConstraintLayout>
