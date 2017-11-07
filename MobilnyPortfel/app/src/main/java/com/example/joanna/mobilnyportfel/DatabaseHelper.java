@@ -5,22 +5,28 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper
+{
     public static final String DATABASE_NAME = "database.db";
     public static final String TABLE_NAME = "users";
-    public static final String COL_1 = "ID";
-    public static final String COL_2 = "LOGIN";
-    public static final String COL_3 = "PASSWORD";
-    public static final String COL_4 = "TYPE";
+    public static final String u_COL_1 = "ID";
+    public static final String u_COL_2 = "TYPE";
+    public static final String u_COL_3 = "PASSWORD";
 
-    public DatabaseHelper(Context context) {
+
+    //HERE can be added new tables like above
+
+    public DatabaseHelper(Context context)
+    {
         super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,LOGIN VARCHAR(20) UNIQUE,PASSWORD VARCHAR(50),TYPE VARCHAR(10) DEFAULT NULL");
+        db.execSQL("create table " + TABLE_NAME +" ("+ u_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + u_COL_2 + " VARCHAR(20), " + u_COL_3 + " VARCHAR(50)");
+        //dont forget to create your table
     }
 
     @Override
@@ -30,33 +36,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertData(String login,String password) {
+    public boolean insertData(String table, String type, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2,login);
-        contentValues.put(COL_3,password);
-        long result = db.insert(TABLE_NAME,null ,contentValues);
+        if(table.charAt(0) == 'u') {
+            contentValues.put(u_COL_2, type);
+            contentValues.put(u_COL_3, password);
+        }
+        // else if == 'other letter'
+            // ->> otherletter_COL_2 etc. - other letter is the first letter of database and you have to add so many puts as columns
+        long result = db.insert(table,null ,contentValues);
         if(result == -1)
             return false;
         else
             return true;
     }
 
-    public Cursor getAllData() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
+    public Cursor getAllData(String table) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from "+table,null);
         return res;
     }
-    public boolean updateData(String id,String login,String password,String type) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1,id);
-        contentValues.put(COL_2,login);
-        contentValues.put(COL_3, password);
-        contentValues.put(COL_4, type);
-        db.update(TABLE_NAME, contentValues, "ID = ?",new String[] { id });
-        return true;
-    }
+
 
     public Integer deleteData (String id) {
         SQLiteDatabase db = this.getWritableDatabase();

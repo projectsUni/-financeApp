@@ -6,59 +6,59 @@
     android:layout_height="match_parent"
     tools:context="com.example.joanna.mobilnyportfel.AccountType">
 
-    <TableLayout
-        android:layout_width="400dp"
-        android:layout_height="495dp"
-        tools:layout_editor_absoluteY="50dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity = "center_vertical">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:layout_alignParentLeft="true">
 
+    <Button
+        android:id="@+id/housewife"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="Gospodyni domowa"
+       />
 
-            <Button
-                android:id="@+id/normaluser"
-                android:layout_width="147dp"
-                android:layout_height="150dp"
-                android:backgroundTint="@android:color/holo_blue_light"
-                android:text="normaluser"
-                tools:layout_editor_absoluteX="203dp" />
+    <Button
+        android:id="@+id/business"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:text="Przedsiębiorca"
+        />
 
-            <Button
-                android:id="@+id/housewife"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:backgroundTint="@android:color/holo_orange_dark"
-                android:text="housewife"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="222dp" />
+</LinearLayout>
 
-        </TableRow>
-
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_alignParentRight="true">
 
             <Button
                 android:id="@+id/student"
-                android:layout_width="147dp"
-                android:layout_height="150dp"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
                 android:backgroundTint="@android:color/holo_red_light"
                 android:text="student"
-                tools:layout_editor_absoluteX="203dp" />
+                 />
             <Button
             android:id="@+id/custom"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
             android:backgroundTint="@android:color/holo_purple"
-            android:text="custom"
-            tools:layout_editor_absoluteX="203dp" />
-        </TableRow>
-
-    </TableLayout>
+            android:text="Ustawienia własne"
+                />
 
 
+</LinearLayout>
+</RelativeLayout>
 </android.support.constraint.ConstraintLayout>
