@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.joanna.mobilnyportfel.EnterExpenses">
+    tools:context="com.example.joanna.mobilnyportfel.EnterIncome">
 
 
     <LinearLayout
@@ -16,17 +16,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wprowadź nazwę wydatku"
+            android:text="Wprowadź nazwę przychodu"
             android:textSize="25dp"
-        />
+            />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-         />
+            />
 
         <EditText
-            android:id="@+id/expense"
+            android:id="@+id/income"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -47,7 +47,7 @@
             android:layout_height="15dp" />
 
         <Button
-            android:id='@+id/expenseCategory'
+            android:id='@+id/incomeCategory'
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text = "Kategoria"
@@ -68,38 +68,38 @@
             android:layout_width="wrap_content"
             android:layout_height="15dp" />
 
-     <LinearLayout
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_gravity="center_horizontal">
-
-         <EditText
-             android:id="@+id/zl"
-             android:layout_width="100dp"
-             android:layout_height="wrap_content"
-             android:ems="10"
-             android:inputType="numberDecimal"
-         />
-
-         <Space
-             android:layout_width="15dp"
-             android:layout_height="match_parent" />
-         <EditText
-            android:id="@+id/grosz"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:maxLength="2"/>
+            android:layout_gravity="center_horizontal">
 
-     </LinearLayout>
+            <EditText
+                android:id="@+id/zl"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                />
+
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="match_parent" />
+            <EditText
+                android:id="@+id/grosz"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:maxLength="2"/>
+
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
         <Button
-            android:id='@+id/expenseConfirm'
+            android:id='@+id/incomeConfirm'
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text = "Zatwierdź"

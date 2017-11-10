@@ -53,7 +53,7 @@ public class AccountType extends AppCompatActivity {
 
         }*/
 
-        Intent intent = new Intent(this, PasswordActivity.class);
+        Intent intent = new Intent(this, Password.class);
         intent.putExtra("EXTRA_MESSAGE", msg);
         startActivity(intent);
 

@@ -18,15 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".PasswordActivity" />
-        <activity
-            android:name=".EnterExpensesActivity"
-            ></activity>
-
-        <activity android:name=".CategoryActivity">
-
-        </activity>
+        <activity android:name=".Password" />
+        <activity android:name=".EnterExpenses" />
+        <activity android:name=".ExpensesCategory" />
+        <activity android:name=".Menu" />
+        <activity android:name=".EnterIncome" />
+        <activity android:name=".IncomeCategory"></activity>
     </application>
 
 </manifest>

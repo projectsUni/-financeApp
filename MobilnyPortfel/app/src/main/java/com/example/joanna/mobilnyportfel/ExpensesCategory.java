@@ -3,14 +3,12 @@ package com.example.joanna.mobilnyportfel;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.Vector;
 
-public class CategoryActivity extends AppCompatActivity {
-
+public class ExpensesCategory extends AppCompatActivity {
     public void buttonClicked(View v)
     {
         String category = "";
@@ -42,6 +40,9 @@ public class CategoryActivity extends AppCompatActivity {
             case R.id.cosmetics:
                 category = "kosmetyki / drogeria";
                 break;
+            case R.id.otherExpenses:
+                category = "inne";
+                break;
         }
 
         Intent intent = new Intent();
@@ -53,7 +54,7 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_expenses_category);
         Vector<Button> categories = new Vector<Button>();
         categories.add((Button)findViewById(R.id.grocery));
         categories.add((Button)findViewById(R.id.fun));
@@ -64,6 +65,7 @@ public class CategoryActivity extends AppCompatActivity {
         categories.add((Button)findViewById(R.id.bills));
         categories.add((Button)findViewById(R.id.clothes));
         categories.add((Button)findViewById(R.id.cosmetics));
+        categories.add((Button)findViewById(R.id.otherExpenses));
 
         for(Button v : categories)
         {
