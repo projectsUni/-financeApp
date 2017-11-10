@@ -18,8 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PasswordActivity"
-            android:parentActivityName=".AccountType"/>
+        <activity
+            android:name=".PasswordActivity" />
+        <activity
+            android:name=".EnterExpensesActivity"
+            ></activity>
+
+        <activity android:name=".CategoryActivity">
+
+        </activity>
     </application>
 
 </manifest>

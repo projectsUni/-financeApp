@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.joanna.mobilnyportfel.CategoryActivity">
+<LinearLayout
+    android:layout_width="368dp"
+    android:layout_height="495dp"
+    android:orientation="vertical"
+    android:gravity="center_vertical|center_horizontal">
+
+    <Button
+        android:id="@+id/grocery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zakupy spożywcze"
+        android:backgroundTint="@android:color/holo_blue_bright"
+        />
+
+
+    <Button
+        android:id="@+id/fun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rozrywka"
+        android:backgroundTint="@android:color/holo_orange_light"
+        />
+
+
+    <Button
+        android:id="@+id/rtvagd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RTV / AGD"
+        android:backgroundTint="@android:color/holo_green_light"
+        />
+
+    <Button
+        android:id="@+id/sport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sport"
+        android:backgroundTint="@android:color/holo_blue_light"
+        />
+
+
+    <Button
+        android:id="@+id/moto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Motoryzacja"
+        android:backgroundTint="@android:color/darker_gray"
+        />
+    <Button
+        android:id="@+id/exchange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Akcje / Obligacje"
+        android:backgroundTint="@android:color/holo_green_dark"
+        />
+
+    <Button
+        android:id="@+id/bills"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rachunki"
+        android:backgroundTint="@android:color/holo_red_light"
+        />
+
+    <Button
+        android:id="@+id/clothes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Odzież / obuwie / akcesoria"
+        android:backgroundTint="@android:color/holo_purple"
+        />
+
+
+    <Button
+        android:id="@+id/cosmetics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kosmetyki / drogeria"
+        android:backgroundTint="@android:color/holo_red_dark"
+        />
+
+</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
