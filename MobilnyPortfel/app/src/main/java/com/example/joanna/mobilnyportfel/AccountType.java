@@ -15,21 +15,24 @@ public class AccountType extends AppCompatActivity {
     DatabaseHelper db;
 
     public String determinate(String type) {
-        Cursor cursor = db.getAllData("users");  //crushes app
-        String msg;
-        if (cursor.moveToFirst()) {
-            do {
+        Cursor cursor = db.getAllData("users123");  //crushes app
+        String msg ="";
+        if(cursor.getCount() == 0)
+        {
+            msg = "false" + ":" + type;
+        }
+        else
+        {
+            while (cursor.moveToNext())
+            {
                 String data = cursor.getString(cursor.getColumnIndex("TYPE"));
-                if (data.equals(type)) {
+                if (data.equals(type))
+                {
                     msg = "true" + ":" + data;
-                    //start
+                    return msg;
                 }
-            } while (cursor.moveToNext());
+            }
             msg = "false" + ":" + type;
-            //start
-        } else {
-            msg = "false" + ":" + type;
-            //start
         }
         cursor.close();
         return msg;
@@ -37,7 +40,7 @@ public class AccountType extends AppCompatActivity {
 
     public void buttonClicked(View v) {
         String msg = "";
-        /*switch (v.getId()) {
+        switch (v.getId()) {
             case R.id.housewife:
                 msg = determinate("housewife");
                 break;
@@ -51,7 +54,7 @@ public class AccountType extends AppCompatActivity {
                 msg = determinate("custom");
                 break;
 
-        }*/
+        }
 
         Intent intent = new Intent(this, Password.class);
         intent.putExtra("EXTRA_MESSAGE", msg);
