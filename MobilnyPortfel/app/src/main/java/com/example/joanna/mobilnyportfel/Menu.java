@@ -22,7 +22,10 @@ public class Menu extends AppCompatActivity {
                 intent = new Intent(this, EnterIncome.class);
                 startActivity(intent);
                 break;
-
+            case R.id.shoppingList:
+                intent = new Intent( this, ShoppingList.class );
+                startActivity(intent);
+                break;
 
         }
     }
@@ -34,6 +37,7 @@ public class Menu extends AppCompatActivity {
         Vector<Button> options = new Vector<Button>();
         options.add((Button)findViewById(R.id.enterExpenses));
         options.add((Button) findViewById(R.id.enterIncome));
+        options.add((Button) findViewById(R.id.shoppingList));
         for(Button v : options)
         {
             v.setOnClickListener(new View.OnClickListener() {
