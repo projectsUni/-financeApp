@@ -24,6 +24,7 @@
         <activity android:name=".Menu" />
         <activity android:name=".EnterIncome" />
         <activity android:name=".IncomeCategory"></activity>
+        <activity android:name=".ShoppingList" />
     </application>
 
 </manifest>
