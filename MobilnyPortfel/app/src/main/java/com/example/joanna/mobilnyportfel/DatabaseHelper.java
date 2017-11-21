@@ -18,6 +18,13 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public static final String u_COL_2 = "TYPE";
     public static final String u_COL_3 = "PASSWORD";
 
+    public static final String e_TABLE_NAME = "expensesTable";
+    public static final String e_COL_1 = "ID";
+    public static final String e_COL_2 = "NAME";
+    public static final String e_COL_3 = "CATEGORY";
+    public static final String e_COL_4 = "AMOUNT";
+    public static final String e_COL_5 = "DATE";
+
 
     //HERE can be added new tables like above
 
@@ -30,6 +37,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("create table if not exists " + u_TABLE_NAME +" ("+ u_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + u_COL_2 + " VARCHAR(20), " + u_COL_3 + " VARCHAR(50))");
+        db.execSQL("create table if not exists " + e_TABLE_NAME +" ("+ e_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + e_COL_2 + " VARCHAR(20), " + e_COL_3 + "  VARCHAR(20), " + e_COL_4 + " VARCHAR(10), " + e_COL_5 + " date )"  );
+
         //dont forget to create your table
     }
 
@@ -47,6 +56,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
         if(table.charAt(0) == 'u') {
             contentValues.put(u_COL_2, data.elementAt(0));
             contentValues.put(u_COL_3, data.elementAt(1));
+        }
+        else if (table.charAt(0) == 'e')
+        {
+            contentValues.put(e_COL_2, data.elementAt(0));
+            contentValues.put(e_COL_3, data.elementAt(1));
+            contentValues.put(e_COL_4, data.elementAt(2));
+            contentValues.put(e_COL_5, data.elementAt(3));
+
         }
         // else if == 'other letter'
             // ->> otherletter_COL_2 etc. - other letter is the first letter of database and you have to add so many puts as columns
