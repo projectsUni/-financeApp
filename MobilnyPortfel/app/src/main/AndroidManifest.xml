@@ -23,7 +23,7 @@
         <activity android:name=".ExpensesCategory" />
         <activity android:name=".Menu" />
         <activity android:name=".EnterIncome" />
-        <activity android:name=".IncomeCategory"></activity>
+        <activity android:name=".IncomeCategory" />
         <activity android:name=".ShoppingList" />
     </application>
 
