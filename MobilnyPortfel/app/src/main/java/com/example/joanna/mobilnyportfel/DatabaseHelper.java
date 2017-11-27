@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 
@@ -19,6 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public static final String u_COL_3 = "PASSWORD";
 
     public static final String l_TABLE_NAME = "shoppingList";
+    public static final String l_COL_0 = "ID";
     public static final String l_COL_1 = "PRODUCT";
     public static final String l_COL_2 = "ZL";
     public static final String l_COL_3 = "GR";
@@ -35,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public DatabaseHelper(Context context)
     {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }
 
     @Override
@@ -43,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
         db.execSQL("create table if not exists " + u_TABLE_NAME +" ("+ u_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + u_COL_2 + " VARCHAR(20), " + u_COL_3 + " VARCHAR(50))");
 
-        db.execSQL("create table if not exists " + l_TABLE_NAME +" ("+ l_COL_1 + " VARCHAR(50), " + l_COL_2 + " INTEGER " + l_COL_3 + " TINYINT(255))");
+        db.execSQL("create table if not exists " + l_TABLE_NAME +" ("+ l_COL_0 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + l_COL_1 + " VARCHAR(50), " + l_COL_2 + " VARCHAR(20), " + l_COL_3 + " VARCHAR(20))");
 
         db.execSQL("create table if not exists " + e_TABLE_NAME +" ("+ e_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + e_COL_2 + " VARCHAR(20), " + e_COL_3 + "  VARCHAR(20), " + e_COL_4 + " VARCHAR(10), " + e_COL_5 + " date )"  );
 
@@ -66,8 +68,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
             contentValues.put(u_COL_3, data.elementAt(1));
         }else if (table.matches("shoppingList")){
             contentValues.put(l_COL_1, data.get(0));
-            contentValues.put(l_COL_2, Integer.parseInt(data.get(1)));
-            contentValues.put(l_COL_3, Integer.parseInt(data.get(2)));
+            contentValues.put(l_COL_2, data.get(1));
+            contentValues.put(l_COL_3, data.get(2));
 
         }
         else if (table.charAt(0) == 'e')
@@ -93,5 +95,29 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return res;
     }
 
+    public ArrayList<productRow> fetch() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] columns = new String[] { DatabaseHelper.l_COL_0, DatabaseHelper.l_COL_1, DatabaseHelper.l_COL_2, DatabaseHelper.l_COL_3 };
+        String selectQuery = "SELECT  * FROM " + l_TABLE_NAME;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        //Cursor cursor = db.query(DatabaseHelper.l_TABLE_NAME, columns, null, null, null, null, null);
+
+        ArrayList <productRow> productsData = new ArrayList<productRow>();
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_1));
+                int priceZL = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_2)));
+                int priceGR = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_3)));
+
+                productsData.add(new productRow(name, priceZL, priceGR)); //add the item
+                cursor.moveToNext();
+            }
+
+        }
+
+
+        return productsData;
+    }
 
 }
