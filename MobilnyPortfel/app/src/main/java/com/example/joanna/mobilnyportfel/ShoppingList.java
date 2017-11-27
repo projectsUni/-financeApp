@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import java.util.Vector;
 import android.text.InputFilter;
@@ -45,45 +46,22 @@ public class ShoppingList extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_view);
         listView.setEmptyView(findViewById(R.id.empty));
 
-        ArrayList<productRow> products = db.fetch();
-        sl_RowAdapter adapter = new sl_RowAdapter(this, R.layout.view_record, products);
+        final ArrayList<productRow> products = db.fetch();
+        final sl_RowAdapter adapter = new sl_RowAdapter(this, R.layout.view_record, products);
 
-        listView.setAdapter(adapter);
-
-        /*
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-                "Android", "iPhone", "WindowsMobile" };
-        final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }
-        final ArrayAdapter adapter = new ArrayAdapter(this,
-                android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adapter);
-
-
-
-        adapter = new SimpleCursorAdapter(this, R.layout.view_record, cursor, from, to, 0);
-        adapter.notifyDataSetChanged();
-
-*/ /*
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Here I want the category_id
 
+
+                db.deleteRow(DatabaseHelper.l_TABLE_NAME, products.get(position).getID());
+                products.remove(position);
+                adapter.notifyDataSetChanged();
             }
         });
-        */
-
-
-
-
-
     }
 
 

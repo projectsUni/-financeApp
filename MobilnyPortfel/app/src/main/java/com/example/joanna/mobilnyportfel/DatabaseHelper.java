@@ -59,6 +59,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
     }
 
 
+    public void deleteRow(String table, int ID)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + table + " WHERE ID=" + ID;
+        db.execSQL(query);
+
+    }
+
     public boolean insertData(String table, Vector<String> data) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -109,8 +117,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_1));
                 int priceZL = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_2)));
                 int priceGR = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_3)));
+                int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_0)));
 
-                productsData.add(new productRow(name, priceZL, priceGR)); //add the item
+                productsData.add(new productRow(name, priceZL, priceGR, ID)); //add the item
                 cursor.moveToNext();
             }
 
