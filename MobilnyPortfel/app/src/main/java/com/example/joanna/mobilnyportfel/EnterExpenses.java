@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Vector;
 
@@ -47,7 +48,9 @@ public class EnterExpenses extends AppCompatActivity {
         data.add(enteredDate);
         db.insertData("expensesTable", data);
 
-
+        Toast.makeText(getApplicationContext(), "Dodane",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
     }
 
     @Override
@@ -55,13 +58,7 @@ public class EnterExpenses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_expenses);
         db = new DatabaseHelper(this);
-        /* Making drop-down list for expenses name (already existing in db)
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-        android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-        AutoCompleteTextView textView = (AutoCompleteTextView)
-                findViewById(R.id.countries_list);
-        textView.setAdapter(adapter);
-        */
+
         Button category = (Button) findViewById(R.id.expenseCategory);
         category.setOnClickListener(new View.OnClickListener() {
             @Override

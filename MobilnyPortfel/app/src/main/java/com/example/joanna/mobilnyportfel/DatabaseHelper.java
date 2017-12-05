@@ -32,7 +32,12 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public static final String e_COL_4 = "AMOUNT";
     public static final String e_COL_5 = "DATE";
 
-
+    public static final String i_TABLE_NAME = "incomeTable";
+    public static final String i_COL_1 = "ID";
+    public static final String i_COL_2 = "NAME";
+    public static final String i_COL_3 = "CATEGORY";
+    public static final String i_COL_4 = "AMOUNT";
+    public static final String i_COL_5 = "DATE";
     //HERE can be added new tables like above
 
     public DatabaseHelper(Context context)
@@ -49,7 +54,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
         db.execSQL("create table if not exists " + e_TABLE_NAME +" ("+ e_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + e_COL_2 + " VARCHAR(20), " + e_COL_3 + "  VARCHAR(20), " + e_COL_4 + " VARCHAR(10), " + e_COL_5 + " date )"  );
 
-        //dont forget to create your table
+        db.execSQL("create table if not exists " + i_TABLE_NAME +" ("+ i_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + i_COL_2 + " VARCHAR(20), " + i_COL_3 + "  VARCHAR(20), " + i_COL_4 + " VARCHAR(10), " + i_COL_5 + " date )"  );
+
     }
 
     @Override
@@ -71,7 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        if(table.charAt(0) == 'u') {
+        if(table.matches("users123")) {
             contentValues.put(u_COL_2, data.elementAt(0));
             contentValues.put(u_COL_3, data.elementAt(1));
         }else if (table.matches("shoppingList")){
@@ -80,12 +86,20 @@ public class DatabaseHelper extends SQLiteOpenHelper
             contentValues.put(l_COL_3, data.get(2));
 
         }
-        else if (table.charAt(0) == 'e')
+        else if (table.matches("expensesTable"))
         {
             contentValues.put(e_COL_2, data.elementAt(0));
             contentValues.put(e_COL_3, data.elementAt(1));
             contentValues.put(e_COL_4, data.elementAt(2));
             contentValues.put(e_COL_5, data.elementAt(3));
+
+        }
+        else if (table.matches("incomeTable"))
+        {
+            contentValues.put(i_COL_2, data.elementAt(0));
+            contentValues.put(i_COL_3, data.elementAt(1));
+            contentValues.put(i_COL_4, data.elementAt(2));
+            contentValues.put(i_COL_5, data.elementAt(3));
 
         }
         // else if == 'other letter'

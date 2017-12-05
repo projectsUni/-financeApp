@@ -13,16 +13,22 @@
         android:orientation="vertical"
         android:gravity="center_vertical|center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wprowadź nazwę przychodu"
-            android:textSize="25dp"
-            />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wprowadź nazwę przychodu"
+            android:textSize="20dp"
+            />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
             />
 
         <EditText
@@ -34,17 +40,17 @@
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="15dp" />
+            android:layout_height="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Wybierz kategorię"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <Space
-            android:layout_width="0dp"
-            android:layout_height="15dp" />
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
 
         <Button
             android:id='@+id/incomeCategory'
@@ -55,18 +61,18 @@
             />
 
         <Space
-            android:layout_width="0dp"
-            android:layout_height="15dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Wprowadź kwotę"
-            android:textSize="25dp"
+            android:textSize="20dp"
             />
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="15dp" />
+            android:layout_height="10dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -82,8 +88,8 @@
                 />
 
             <Space
-                android:layout_width="15dp"
-                android:layout_height="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
             <EditText
                 android:id="@+id/grosz"
                 android:layout_width="100dp"
@@ -96,8 +102,28 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="5dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wprowadź datę"
+            android:textSize="20dp"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <DatePicker
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:backgroundTint="@android:color/holo_blue_light"
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
         <Button
             android:id='@+id/incomeConfirm'
             android:layout_width="match_parent"
