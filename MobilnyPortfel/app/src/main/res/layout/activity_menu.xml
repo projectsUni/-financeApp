@@ -58,15 +58,20 @@
 
 
         <LinearLayout
-                android:layout_width="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/showExpenses"
+                android:text="wyświetl wydatki"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:backgroundTint="#87A"
                 />
 
             <Button
+                android:id="@+id/showIncome"
+                android:text="wyświetl wydatki"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 />
