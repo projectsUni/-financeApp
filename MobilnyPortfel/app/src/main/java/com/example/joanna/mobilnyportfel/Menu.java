@@ -13,7 +13,8 @@ public class Menu extends AppCompatActivity {
     public void buttonClicked(View v)
     {
         Intent intent;
-        switch (v.getId()) {
+        switch (v.getId())
+        {
             case R.id.enterExpenses:
                 intent = new Intent(this, EnterExpenses.class);
                 startActivity(intent);
@@ -24,6 +25,14 @@ public class Menu extends AppCompatActivity {
                 break;
             case R.id.shoppingList:
                 intent = new Intent( this, ShoppingList.class );
+                startActivity(intent);
+                break;
+            case R.id.showExpenses:
+                intent = new Intent( this, displayExpenses.class );
+                startActivity(intent);
+                break;
+            case R.id.showIncome:
+                intent = new Intent( this, displayIncome.class );
                 startActivity(intent);
                 break;
 
@@ -38,6 +47,8 @@ public class Menu extends AppCompatActivity {
         options.add((Button)findViewById(R.id.enterExpenses));
         options.add((Button) findViewById(R.id.enterIncome));
         options.add((Button) findViewById(R.id.shoppingList));
+        options.add((Button) findViewById(R.id.showExpenses));
+        options.add((Button) findViewById(R.id.showIncome));
         for(Button v : options)
         {
             v.setOnClickListener(new View.OnClickListener() {

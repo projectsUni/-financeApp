@@ -71,7 +71,7 @@
 
             <Button
                 android:id="@+id/showIncome"
-                android:text="wyświetl wydatki"
+                android:text="wyświetl przychody"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 />
