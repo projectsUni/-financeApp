@@ -47,4 +47,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteY="4dp" />
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

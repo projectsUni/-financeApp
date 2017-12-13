@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.joanna.mobilnyportfel.SortData">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical|center_horizontal"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/daily"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:text="dziennie"
+                android:backgroundTint="#54B2A1"
+                />
+
+            <Button
+                android:id="@+id/monthly"
+                android:text="miesięcznie"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:backgroundTint="#18B2DF"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/yearly"
+                android:text="rocznie"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:backgroundTint="#3070DF"
+
+                />
+            <Button
+                android:id="@+id/allexpenses"
+                android:text="wszystkie"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:backgroundTint="#3152DF"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
