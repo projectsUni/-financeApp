@@ -18,6 +18,21 @@ public class productRow {
         this.ID = ID;
     }
 
+    public productRow(String name, int price_zl, int price_gr){
+        prName = name;
+        this.priceZL = price_zl;
+        this.priceGR = price_gr;
+    }
+
+    public void add(int zl, int gr) {
+        this.priceZL += zl;
+        this.priceGR += gr;
+        if (priceGR > 100){
+            priceZL += 1;
+            priceGR -= 100;
+        }
+    }
+
     public int getID(){
         return ID;
     }

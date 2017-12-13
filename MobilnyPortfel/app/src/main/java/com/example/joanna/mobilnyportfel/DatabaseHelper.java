@@ -118,6 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     }
 
     public ArrayList<productRow> fetch() {
+
         SQLiteDatabase db = this.getWritableDatabase();
         String[] columns = new String[] { DatabaseHelper.l_COL_0, DatabaseHelper.l_COL_1, DatabaseHelper.l_COL_2, DatabaseHelper.l_COL_3 };
         String selectQuery = "SELECT  * FROM " + l_TABLE_NAME;
@@ -143,4 +144,107 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return productsData;
     }
 
+    public ArrayList<productRow> getExpensesArr() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //String[] columns = new String[] { DatabaseHelper.e_COL_1, DatabaseHelper.e_COL_2, DatabaseHelper.e_COL_3, DatabaseHelper.e_COL_4 };
+        String selectQuery = "SELECT  * FROM " + e_TABLE_NAME;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        //Cursor cursor = db.query(DatabaseHelper.l_TABLE_NAME, columns, null, null, null, null, null);
+
+        ArrayList <productRow> productsData = new ArrayList<productRow>();
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_3));
+                String fullPriceString = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_4));
+                double fullPrice = Double.parseDouble(fullPriceString.replaceAll(",", "."));
+
+                int priceZL = (int)fullPrice;
+                int priceGR = (int)((fullPrice-priceZL)*100);
+
+                //priceGR -= priceZL;
+                //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));
+                boolean isFounded = false;
+
+                if (productsData.size() > 0){
+                    for (int i = 0; i < productsData.size(); i++){
+                        if (name.equals(productsData.get(i).prName)){
+                            productsData.get(i).add(priceZL, priceGR);
+                            isFounded = true;
+                        }
+                    }
+                }
+
+                if (!isFounded){
+                    productsData.add(new productRow(name, priceZL, priceGR)); //add the item
+                }
+                cursor.moveToNext();
+            }
+
+        }
+
+
+        return productsData;
+    }
+
+
+    public ArrayList<productRow> getIncomesArr() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //String[] columns = new String[] { DatabaseHelper.e_COL_1, DatabaseHelper.e_COL_2, DatabaseHelper.e_COL_3, DatabaseHelper.e_COL_4 };
+        String selectQuery = "SELECT  * FROM " + i_TABLE_NAME;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        //Cursor cursor = db.query(DatabaseHelper.l_TABLE_NAME, columns, null, null, null, null, null);
+
+        ArrayList <productRow> productsData = new ArrayList<productRow>();
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_3));
+                String fullPriceString = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_4));
+                double fullPrice = Double.parseDouble(fullPriceString.replaceAll(",", "."));
+
+                int priceZL = (int)fullPrice;
+                int priceGR = (int)fullPrice-priceZL;
+
+                //priceGR -= priceZL;
+                //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));
+                boolean isFounded = false;
+
+                if (productsData.size() > 0){
+                    for (int i = 0; i < productsData.size(); i++){
+                        if (name.equals(productsData.get(i).prName)){
+                            productsData.get(i).add(priceZL, priceGR);
+                            isFounded = true;
+                        }
+                    }
+                }
+
+                if (!isFounded){
+                    productsData.add(new productRow(name, priceZL, priceGR)); //add the item
+                }
+                cursor.moveToNext();
+            }
+
+        }
+
+
+        return productsData;
+    }
+
+    public void deleteTable(String table) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selectQuery = "DROP TABLE " + table;
+
+        db.execSQL(selectQuery);
+
+    }
+
+    public void create(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("create table if not exists " + e_TABLE_NAME +" ("+ e_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + e_COL_2 + " VARCHAR(20), " + e_COL_3 + "  VARCHAR(20), " + e_COL_4 + " VARCHAR(10), " + e_COL_5 + " date )"  );
+
+        db.execSQL("create table if not exists " + i_TABLE_NAME +" ("+ i_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + i_COL_2 + " VARCHAR(20), " + i_COL_3 + "  VARCHAR(20), " + i_COL_4 + " VARCHAR(10), " + i_COL_5 + " date )"  );
+
+    }
 }
