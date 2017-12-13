@@ -37,7 +37,11 @@
         <activity
             android:name=".displayIncome"
             android:label="@string/title_activity_display_income"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SortData" />
+        <activity android:name=".DailyExpenses" />
+        <activity android:name=".MonthlyExpenses" />
+        <activity android:name=".YearlyExpenses"></activity>
     </application>
 
 </manifest>

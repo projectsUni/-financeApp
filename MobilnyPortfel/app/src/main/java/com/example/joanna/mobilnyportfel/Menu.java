@@ -28,7 +28,7 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.showExpenses:
-                intent = new Intent( this, displayExpenses.class );
+                intent = new Intent( this, SortData.class );
                 startActivity(intent);
                 break;
             case R.id.showIncome:
