@@ -14,34 +14,34 @@ public class ExpensesCategory extends AppCompatActivity {
         String category = "";
         switch (v.getId()) {
             case R.id.grocery:
-                category = "zakupy spożywcze";
+                category = "Zakupy spożywcze";
                 break;
             case R.id.fun:
-                category = "rozrywka";
+                category = "Rozrywka";
                 break;
             case R.id.rtvagd:
-                category = "rtv/agd";
+                category = "RTV/AGD";
                 break;
             case R.id.sport:
-                category = "sport";
+                category = "Sport";
                 break;
             case R.id.moto:
-                category = "motoryzacja";
+                category = "Motoryzacja";
                 break;
             case R.id.exchange:
-                category = "akcje / obligacje";
+                category = "Akcje / obligacje";
                 break;
             case R.id.bills:
-                category = "rachunki";
+                category = "Rachunki";
                 break;
             case R.id.clothes:
-                category = "odzież / obuwie / akcesoria";
+                category = "Odzież / obuwie / akcesoria";
                 break;
             case R.id.cosmetics:
-                category = "kosmetyki / drogeria";
+                category = "Kosmetyki / drogeria";
                 break;
             case R.id.otherExpenses:
-                category = "inne";
+                category = "Inne";
                 break;
         }
 

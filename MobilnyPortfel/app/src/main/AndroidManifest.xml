@@ -30,14 +30,8 @@
             android:name=".AddProductActivity"
             android:label="@string/title_activity_add_product"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".displayExpenses"
-            android:label="@string/title_activity_display_expenses"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".displayIncome"
-            android:label="@string/title_activity_display_income"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".displayExpenses" />
+        <activity android:name=".displayIncome" />
     </application>
 
 </manifest>
