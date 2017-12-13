@@ -1,5 +1,7 @@
 package com.example.joanna.mobilnyportfel;
 
+import java.util.Date;
+
 /**
  * Created by Łukasz on 27.11.2017.
  */
@@ -10,6 +12,7 @@ public class productRow {
     public int priceZL;
     public int priceGR;
     private int ID;
+    private String date;
 
     public productRow(String name, int price_zl, int price_gr, int ID){
         prName = name;
@@ -18,10 +21,11 @@ public class productRow {
         this.ID = ID;
     }
 
-    public productRow(String name, int price_zl, int price_gr){
+    public productRow(String name, int price_zl, int price_gr, String date){
         prName = name;
         this.priceZL = price_zl;
         this.priceGR = price_gr;
+        this.date = date;
     }
 
     public void add(int zl, int gr) {
@@ -36,4 +40,5 @@ public class productRow {
     public int getID(){
         return ID;
     }
+    public String getDate() { return date; }
 }

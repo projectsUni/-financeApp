@@ -31,7 +31,7 @@ public class displayExpenses extends AppCompatActivity {
         listView.setEmptyView(findViewById(R.id.empty));
 
         final ArrayList<productRow> products = db.getExpensesArr();
-        final sl_RowAdapter adapter = new sl_RowAdapter(this, R.layout.ie_records, products);
+        final ie_RowAdapter adapter = new ie_RowAdapter(this, R.layout.ie_records, products);
 
         listView.setAdapter(adapter);
     }

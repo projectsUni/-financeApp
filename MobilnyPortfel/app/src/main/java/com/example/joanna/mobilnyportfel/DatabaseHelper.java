@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 
@@ -155,8 +156,10 @@ public class DatabaseHelper extends SQLiteOpenHelper
         if (cursor != null) {
             cursor.moveToFirst();
             while(!cursor.isAfterLast()) {
-                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_3));
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_2));
                 String fullPriceString = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_4));
+                String date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_5));
+
                 double fullPrice = Double.parseDouble(fullPriceString.replaceAll(",", "."));
 
                 int priceZL = (int)fullPrice;
@@ -164,20 +167,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
                 //priceGR -= priceZL;
                 //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));
-                boolean isFounded = false;
 
-                if (productsData.size() > 0){
-                    for (int i = 0; i < productsData.size(); i++){
-                        if (name.equals(productsData.get(i).prName)){
-                            productsData.get(i).add(priceZL, priceGR);
-                            isFounded = true;
-                        }
-                    }
-                }
 
-                if (!isFounded){
-                    productsData.add(new productRow(name, priceZL, priceGR)); //add the item
-                }
+                productsData.add(new productRow(name, priceZL, priceGR, date)); //add the item
                 cursor.moveToNext();
             }
 
@@ -201,6 +193,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
             while(!cursor.isAfterLast()) {
                 String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_3));
                 String fullPriceString = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_4));
+                String date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_5));
                 double fullPrice = Double.parseDouble(fullPriceString.replaceAll(",", "."));
 
                 int priceZL = (int)fullPrice;
@@ -208,20 +201,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
                 //priceGR -= priceZL;
                 //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));
-                boolean isFounded = false;
 
-                if (productsData.size() > 0){
-                    for (int i = 0; i < productsData.size(); i++){
-                        if (name.equals(productsData.get(i).prName)){
-                            productsData.get(i).add(priceZL, priceGR);
-                            isFounded = true;
-                        }
-                    }
-                }
+                productsData.add(new productRow(name, priceZL, priceGR, date)); //add the item
 
-                if (!isFounded){
-                    productsData.add(new productRow(name, priceZL, priceGR)); //add the item
-                }
                 cursor.moveToNext();
             }
 
