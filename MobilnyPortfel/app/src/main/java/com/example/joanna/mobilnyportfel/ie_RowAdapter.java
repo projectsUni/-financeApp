@@ -37,6 +37,7 @@ public class ie_RowAdapter extends ArrayAdapter<productRow> {
             row = inflater.inflate(layoutResourceId, parent, false);
 
             holder = new ie_RowAdapter.ieHolder();
+            holder.prName1 = (TextView)row.findViewById(R.id.productName1);
             holder.prName = (TextView)row.findViewById(R.id.productName);
             holder.zlote = (TextView)row.findViewById(R.id.zl);
             holder.grosze = (TextView)row.findViewById(R.id.grosz);
@@ -49,6 +50,7 @@ public class ie_RowAdapter extends ArrayAdapter<productRow> {
         }
 
         productRow object = data.get(position);
+        holder.prName1.setText(object.prName1);
         holder.prName.setText(object.prName);
         holder.zlote.setText(Integer.toString(object.priceZL));
         holder.grosze.setText(Integer.toString(object.priceGR));
@@ -59,6 +61,7 @@ public class ie_RowAdapter extends ArrayAdapter<productRow> {
 
     static class ieHolder {
         TextView prName;
+        TextView prName1;
         TextView zlote;
         TextView grosze;
         TextView date;

@@ -14,8 +14,9 @@ public class AccountType extends AppCompatActivity {
 
     DatabaseHelper db;
 
-    public String determinate(String type) {
-        Cursor cursor = db.getAllData("users123");  //crushes app
+    public String determinate(String type)
+    {
+   /*     Cursor cursor = db.getAllData("users123");  //crushes app
         String msg ="";
         if(cursor.getCount() == 0)
         {
@@ -33,9 +34,12 @@ public class AccountType extends AppCompatActivity {
                 }
             }
             msg = "false" + ":" + type;
+ //           Toast.makeText(getApplicationContext(), "Witaj nowy użykowniku. Ustal hasło.", Toast.LENGTH_LONG).show();
         }
         cursor.close();
         return msg;
+    */
+    return "housewife";
     }
 
     public void buttonClicked(View v) {
@@ -77,7 +81,6 @@ public class AccountType extends AppCompatActivity {
         setContentView(R.layout.activity_account_type);
 
         db = new DatabaseHelper(this);
-
         Button housewife = (Button) findViewById(R.id.housewife);
         housewife.setOnClickListener(new View.OnClickListener() {
             @Override

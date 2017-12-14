@@ -29,10 +29,12 @@ public class Menu extends AppCompatActivity {
                 break;
             case R.id.showExpenses:
                 intent = new Intent( this, SortData.class );
+                intent.putExtra("caller", "expenses");
                 startActivity(intent);
                 break;
             case R.id.showIncome:
-                intent = new Intent( this, DisplayIncome.class );
+                intent = new Intent( this, SortData.class );
+                intent.putExtra("caller", "income");
                 startActivity(intent);
                 break;
 

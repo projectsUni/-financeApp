@@ -30,17 +30,17 @@
             android:label="@string/title_activity_add_product"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DisplayExpenses"
+            android:name=".displayExpenses"
             android:label="@string/title_activity_display_expenses"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DisplayIncome"
+            android:name=".displayIncome"
             android:label="@string/title_activity_display_income"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SortData" />
-        <activity android:name=".DailyExpenses" />
-        <activity android:name=".MonthlyExpenses" />
-        <activity android:name=".YearlyExpenses"></activity>
+        <activity android:name=".Daily" />
+        <activity android:name=".Monthly" />
+        <activity android:name=".Yearly"></activity>
 
     </application>
 

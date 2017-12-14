@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        if(table.matches("users123")) {
+        if(table.matches("users1234")) {
             contentValues.put(u_COL_2, data.elementAt(0));
             contentValues.put(u_COL_3, data.elementAt(1));
         }else if (table.matches("shoppingList")){
@@ -131,11 +132,12 @@ public class DatabaseHelper extends SQLiteOpenHelper
             cursor.moveToFirst();
             while(!cursor.isAfterLast()) {
                 String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_1));
+                String name1 = cursor.getColumnName(cursor.getColumnIndex(DatabaseHelper.l_COL_1));
                 int priceZL = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_2)));
                 int priceGR = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_3)));
                 int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_0)));
 
-                productsData.add(new productRow(name, priceZL, priceGR, ID)); //add the item
+                productsData.add(new productRow(name, name1, priceZL, priceGR, ID)); //add the item
                 cursor.moveToNext();
             }
 
@@ -156,20 +158,21 @@ public class DatabaseHelper extends SQLiteOpenHelper
         if (cursor != null) {
             cursor.moveToFirst();
             while(!cursor.isAfterLast()) {
-                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_2));
+
+                String name1 = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_2));
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_3));
                 String fullPriceString = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_4));
                 String date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_5));
-
                 double fullPrice = Double.parseDouble(fullPriceString.replaceAll(",", "."));
 
                 int priceZL = (int)fullPrice;
-                int priceGR = (int)((fullPrice-priceZL)*100);
+                int priceGR = (int)fullPrice-priceZL;
 
                 //priceGR -= priceZL;
                 //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));
 
+                productsData.add(new productRow(name, name1, priceZL, priceGR, date)); //add the item
 
-                productsData.add(new productRow(name, priceZL, priceGR, date)); //add the item
                 cursor.moveToNext();
             }
 
@@ -191,6 +194,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         if (cursor != null) {
             cursor.moveToFirst();
             while(!cursor.isAfterLast()) {
+                String name1 = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_2));
                 String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_3));
                 String fullPriceString = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_4));
                 String date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_5));
@@ -202,7 +206,76 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 //priceGR -= priceZL;
                 //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));
 
-                productsData.add(new productRow(name, priceZL, priceGR, date)); //add the item
+                productsData.add(new productRow(name, name1, priceZL, priceGR, date)); //add the item
+
+                cursor.moveToNext();
+            }
+
+        }
+
+
+        return productsData;
+    }
+    public ArrayList<productRow> getExpensesDay( String chosenDay) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //String[] columns = new String[] { DatabaseHelper.e_COL_1, DatabaseHelper.e_COL_2, DatabaseHelper.e_COL_3, DatabaseHelper.e_COL_4 };
+        String selectQuery = "SELECT  * FROM " + e_TABLE_NAME;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        //Cursor cursor = db.query(DatabaseHelper.l_TABLE_NAME, columns, null, null, null, null, null);
+
+        ArrayList <productRow> productsData = new ArrayList<productRow>();
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+
+                String name1 = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_2));
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_3));
+                String fullPriceString = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_4));
+                String date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_5));
+                double fullPrice = Double.parseDouble(fullPriceString.replaceAll(",", "."));
+
+                int priceZL = (int)fullPrice;
+                int priceGR = (int)fullPrice-priceZL;
+
+                //priceGR -= priceZL;
+                //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));
+                if(date.equals(chosenDay))
+                    productsData.add(new productRow(name, name1, priceZL, priceGR, date)); //add the item
+
+                cursor.moveToNext();
+            }
+
+        }
+
+
+        return productsData;
+    }
+
+
+    public ArrayList<productRow> getIncomesDay(String chosenDate) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //String[] columns = new String[] { DatabaseHelper.e_COL_1, DatabaseHelper.e_COL_2, DatabaseHelper.e_COL_3, DatabaseHelper.e_COL_4 };
+        String selectQuery = "SELECT  * FROM " + i_TABLE_NAME;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        //Cursor cursor = db.query(DatabaseHelper.l_TABLE_NAME, columns, null, null, null, null, null);
+
+        ArrayList <productRow> productsData = new ArrayList<productRow>();
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                String name1 = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_2));
+                String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_3));
+                String fullPriceString = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_4));
+                String date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_5));
+                double fullPrice = Double.parseDouble(fullPriceString.replaceAll(",", "."));
+
+                int priceZL = (int)fullPrice;
+                int priceGR = (int)fullPrice-priceZL;
+
+                //priceGR -= priceZL;
+                //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));
+                if(date.equals(chosenDate))
+                    productsData.add(new productRow(name, name1, priceZL, priceGR, date)); //add the item
 
                 cursor.moveToNext();
             }
@@ -215,7 +288,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public void deleteTable(String table) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selectQuery = "DROP TABLE " + table;
+        String selectQuery = "DROP TABLE if exists" + table;
 
         db.execSQL(selectQuery);
 

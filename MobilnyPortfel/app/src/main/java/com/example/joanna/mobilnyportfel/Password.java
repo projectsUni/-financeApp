@@ -32,16 +32,18 @@ public class Password extends AppCompatActivity {
         EditText pin = (EditText) findViewById(R.id.pin);
         String enteredPIN = pin.getText().toString();
         Vector<String> data = new Vector<String>();
-        data.add(substring[1]);
+        data.add("housewife");///substring[1]);
         data.add(enteredPIN);
         if(substring[0].equals("true"))
         {
             //get password from database, authorize and start activity from second substring (switch case)
-            String pass = getUserPassword(substring[1]);
+            String pass = "lll";//getUserPassword(substring[1]);
             if(enteredPIN.equals(pass))
-                Toast.makeText(getApplicationContext(), "Logowanie...",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Logowanie...", Toast.LENGTH_LONG).show();
+
             else
                 Toast.makeText(getApplicationContext(), "Błędny login lub hasło", Toast.LENGTH_LONG).show();
+
         }
         else
         {
@@ -53,6 +55,7 @@ public class Password extends AppCompatActivity {
         Intent intent = new Intent(this, Menu.class);
         startActivity(intent);
 
+
     }
 
     @Override
@@ -63,7 +66,6 @@ public class Password extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra("EXTRA_MESSAGE");
         final String[] substring = message.split(":");
-
         Button confirm = (Button) findViewById(R.id.confirmPIN);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
