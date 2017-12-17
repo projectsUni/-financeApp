@@ -57,9 +57,15 @@ public class ShoppingList extends AppCompatActivity {
                 // Here I want the category_id
 
 
-                db.deleteRow(DatabaseHelper.l_TABLE_NAME, products.get(position).getID());
-                products.remove(position);
-                adapter.notifyDataSetChanged();
+                //db.deleteRow(DatabaseHelper.l_TABLE_NAME, products.get(position).getID());
+                int result = db.moveToExpenses(products.get(position).getID());
+                if(result == 1)
+                {
+                    products.remove(position);
+                    adapter.notifyDataSetChanged();
+                }else {
+                    Toast.makeText(getApplicationContext(), "Nie przeniesiono.", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

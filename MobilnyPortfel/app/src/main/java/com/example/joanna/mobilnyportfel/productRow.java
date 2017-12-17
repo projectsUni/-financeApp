@@ -14,14 +14,8 @@ public class productRow {
     public int priceGR;
     private int ID;
     private String date;
+    private String category;
 
-    public productRow(String name, String name1, int price_zl, int price_gr, int ID){
-        prName = name;
-        prName1 = name1;
-        this.priceZL = price_zl;
-        this.priceGR = price_gr;
-        this.ID = ID;
-    }
 
     public productRow(String name, String name1, int price_zl, int price_gr, String date){
         prName = name;
@@ -29,6 +23,14 @@ public class productRow {
         this.priceZL = price_zl;
         this.priceGR = price_gr;
         this.date = date;
+    }
+
+    public productRow(String name, String category, int price_zl, int price_gr, int ID){
+        prName = name;
+        this.priceZL = price_zl;
+        this.priceGR = price_gr;
+        this.ID = ID;
+        this.category = category;
     }
 
     public void add(int zl, int gr) {

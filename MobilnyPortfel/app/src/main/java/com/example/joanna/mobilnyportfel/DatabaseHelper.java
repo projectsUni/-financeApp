@@ -2,6 +2,7 @@ package com.example.joanna.mobilnyportfel;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,7 +10,10 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
@@ -27,6 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public static final String l_COL_1 = "PRODUCT";
     public static final String l_COL_2 = "ZL";
     public static final String l_COL_3 = "GR";
+    public static final String l_COL_4 = "CATEGORY";
 
     public static final String e_TABLE_NAME = "expensesTable";
     public static final String e_COL_1 = "ID";
@@ -53,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
         db.execSQL("create table if not exists " + u_TABLE_NAME +" ("+ u_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + u_COL_2 + " VARCHAR(20), " + u_COL_3 + " VARCHAR(50))");
 
-        db.execSQL("create table if not exists " + l_TABLE_NAME +" ("+ l_COL_0 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + l_COL_1 + " VARCHAR(50), " + l_COL_2 + " VARCHAR(20), " + l_COL_3 + " VARCHAR(20))");
+        db.execSQL("create table if not exists " + l_TABLE_NAME +" ("+ l_COL_0 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + l_COL_1 + " VARCHAR(50), " + l_COL_2 + " VARCHAR(20), " + l_COL_3 + " VARCHAR(20)," + l_COL_4 + " VARCHAR(20))");
 
         db.execSQL("create table if not exists " + e_TABLE_NAME +" ("+ e_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + e_COL_2 + " VARCHAR(20), " + e_COL_3 + "  VARCHAR(20), " + e_COL_4 + " VARCHAR(10), " + e_COL_5 + " date )"  );
 
@@ -68,13 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     }
 
 
-    public void deleteRow(String table, int ID)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM " + table + " WHERE ID=" + ID;
-        db.execSQL(query);
 
-    }
 
     public boolean insertData(String table, Vector<String> data) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -87,7 +86,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
             contentValues.put(l_COL_1, data.get(0));
             contentValues.put(l_COL_2, data.get(1));
             contentValues.put(l_COL_3, data.get(2));
-
+            contentValues.put(l_COL_4, data.get(3));
         }
         else if (table.matches("expensesTable"))
         {
@@ -133,13 +132,22 @@ public class DatabaseHelper extends SQLiteOpenHelper
             cursor.moveToFirst();
             while(!cursor.isAfterLast()) {
                 String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_1));
-
-                String name1 = cursor.getColumnName(cursor.getColumnIndex(DatabaseHelper.l_COL_1));
-                int priceZL = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_2)));
-                int priceGR = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_3)));
+                String category = cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_4));
+                int priceZL = 0;
+                int priceGR = 0;
                 int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_0)));
 
-                productsData.add(new productRow(name, name1, priceZL, priceGR, ID)); //add the item
+                String msg = "Błąd dla ID: " + ID;
+                try{
+                     priceZL = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_2)));
+                     priceGR = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_3)));
+                }catch(NumberFormatException ex) {
+                    //
+                }
+
+
+                productsData.add(new productRow(name, category, priceZL, priceGR, ID)); //add the item
+
                 cursor.moveToNext();
             }
 
@@ -299,9 +307,52 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public void create(){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        db.execSQL("create table if not exists " + e_TABLE_NAME +" ("+ e_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + e_COL_2 + " VARCHAR(20), " + e_COL_3 + "  VARCHAR(20), " + e_COL_4 + " VARCHAR(10), " + e_COL_5 + " date )"  );
+        db.execSQL("DROP TABLE " + l_TABLE_NAME);
+        db.execSQL("create table " + l_TABLE_NAME +" ("+ l_COL_0 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + l_COL_1 + " VARCHAR(50), " + l_COL_2 + " VARCHAR(20), " + l_COL_3 + " VARCHAR(20)," + l_COL_4 + " VARCHAR(20))");
 
-        db.execSQL("create table if not exists " + i_TABLE_NAME +" ("+ i_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + i_COL_2 + " VARCHAR(20), " + i_COL_3 + "  VARCHAR(20), " + i_COL_4 + " VARCHAR(10), " + i_COL_5 + " date )"  );
+    }
 
+    public void deleteRow(String table, int ID)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + table + " WHERE ID=" + ID;
+        db.execSQL(query);
+
+    }
+
+    public int moveToExpenses(int ID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + l_TABLE_NAME + " WHERE ID=" + ID;
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor != null){
+            cursor.moveToFirst();
+            String prName = cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_1));
+            String category = cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_4));
+
+            int zl = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_2)));
+            int gr = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_3)));
+            float grosze = (float)gr / 100;
+
+            float totalPrice = zl+grosze;
+
+
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            Date today = Calendar.getInstance().getTime();
+            String reportDate = df.format(today);
+
+            Vector <String > data = new Vector<>();
+            data.add(prName);
+            data.add(category);
+            data.add(Float.toString(totalPrice));
+            data.add(reportDate);
+
+            insertData(e_TABLE_NAME, data);
+            deleteRow(l_TABLE_NAME, ID);
+
+            return 1;
+        }else {
+            return 0;
+        }
     }
 }

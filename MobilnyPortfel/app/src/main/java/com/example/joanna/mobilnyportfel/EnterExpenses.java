@@ -39,9 +39,12 @@ public class EnterExpenses extends AppCompatActivity {
         TextView zl = (TextView) findViewById(R.id.zl);
         TextView gr = (TextView) findViewById(R.id.grosz);
         DatePicker date = (DatePicker) findViewById(R.id.date);
+
         Vector<String> data = new Vector<String>();
+
         data.add(name.getText().toString());
         data.add(category.getText().toString());
+
         String p = zl.getText().toString() + "," + gr.getText().toString();
         data.add(p);
         String enteredDate = date.getYear() + "-" + date.getMonth() + "-" + date.getDayOfMonth();

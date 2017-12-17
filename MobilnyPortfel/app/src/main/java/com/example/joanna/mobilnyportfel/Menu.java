@@ -58,5 +58,6 @@ public class Menu extends AppCompatActivity {
                 public void onClick(View view){ buttonClicked(view);}}
             );
         }
+
     }
 }
