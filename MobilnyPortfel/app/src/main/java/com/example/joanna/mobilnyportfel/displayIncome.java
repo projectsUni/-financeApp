@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +22,12 @@ public class displayIncome extends AppCompatActivity {
     private DatabaseHelper db;
     private ListView listView;
     private SimpleCursorAdapter adapter;
+
+    public void buttonClicked()
+    {
+        Intent intent = new Intent(this, ShowGraph.class);
+        startActivity(intent);
+    }
 
     protected void  onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -35,5 +42,14 @@ public class displayIncome extends AppCompatActivity {
         final ie_RowAdapter adapter = new ie_RowAdapter(this, R.layout.ie_records, products);
 
         listView.setAdapter(adapter);
+
+        Button graph = (Button) findViewById(R.id.showGraph);
+        graph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+
+               buttonClicked();
+            }}
+        );
     }
 }

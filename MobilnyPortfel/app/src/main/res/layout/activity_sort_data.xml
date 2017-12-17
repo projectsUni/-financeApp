@@ -50,7 +50,7 @@
 
                 />
             <Button
-                android:id="@+id/allexpenses"
+                android:id="@+id/alldata"
                 android:text="wszystkie"
                 android:layout_width="150dp"
                 android:layout_height="150dp"

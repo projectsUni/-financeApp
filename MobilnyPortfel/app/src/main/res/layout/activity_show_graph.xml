@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.joanna.mobilnyportfel.Monthly">
+    tools:context="com.example.joanna.mobilnyportfel.ShowGraph">
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:id="@+id/graph" />
 
 </android.support.constraint.ConstraintLayout>

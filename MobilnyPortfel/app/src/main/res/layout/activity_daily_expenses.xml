@@ -4,6 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.joanna.mobilnyportfel.DailyExpenses">
+    tools:context="com.example.joanna.mobilnyportfel.Daily">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wybierz datę "
+            android:textSize = "25dp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+        <DatePicker
+            android:id="@+id/chdate"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:backgroundTint="@android:color/holo_blue_light"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+        <Button
+            android:id="@+id/subButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="OK"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+
+            ></ListView>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

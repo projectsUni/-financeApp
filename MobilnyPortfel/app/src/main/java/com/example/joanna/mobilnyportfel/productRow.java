@@ -9,20 +9,23 @@ import java.util.Date;
 public class productRow {
 
     public String prName;
+    public String prName1;
     public int priceZL;
     public int priceGR;
     private int ID;
     private String date;
 
-    public productRow(String name, int price_zl, int price_gr, int ID){
+    public productRow(String name, String name1, int price_zl, int price_gr, int ID){
         prName = name;
+        prName1 = name1;
         this.priceZL = price_zl;
         this.priceGR = price_gr;
         this.ID = ID;
     }
 
-    public productRow(String name, int price_zl, int price_gr, String date){
+    public productRow(String name, String name1, int price_zl, int price_gr, String date){
         prName = name;
+        prName1 = name1;
         this.priceZL = price_zl;
         this.priceGR = price_gr;
         this.date = date;
