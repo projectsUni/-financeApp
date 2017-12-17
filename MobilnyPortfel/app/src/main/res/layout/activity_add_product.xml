@@ -27,7 +27,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="złote"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:text="00" />
 
 
     <EditText
@@ -40,6 +41,14 @@
         android:text="00" />
 
     </LinearLayout>
+
+    <Button
+        android:id='@+id/expenseCategory'
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "Kategoria"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        />
 
     <Button
         android:id="@+id/add_record"

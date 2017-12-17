@@ -21,7 +21,7 @@ public class SortData extends AppCompatActivity {
             case R.id.yearly:
                 break;
             case R.id.allexpenses:
-                Intent intent = new Intent(this, DisplayExpenses.class);
+                Intent intent = new Intent(this, displayExpenses.class);
                 startActivity(intent);
                 break;
         }

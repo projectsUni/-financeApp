@@ -14,7 +14,7 @@ import java.util.Vector;
 
 public class AddProductActivity extends Activity implements OnClickListener {
 
-    private Button addButton;
+    private Button addButton, category;
     private EditText productName;
     private EditText priceZloty;
     private EditText priceGrosz;
@@ -32,28 +32,58 @@ public class AddProductActivity extends Activity implements OnClickListener {
         priceZloty = (EditText)findViewById(R.id.zl);
         priceGrosz = (EditText)findViewById(R.id.grosz);
         addButton = (Button) findViewById(R.id.add_record);
+        category = (Button) findViewById(R.id.expenseCategory);
 
         db = new DatabaseHelper(this);
         addButton.setOnClickListener(this);
+        category.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.expenseCategory:
+                Toast.makeText(this, "Kategoria kliknięta", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(this, ExpensesCategory.class);
+                startActivityForResult(intent,1);
+
+                break;
             case R.id.add_record:
                 Vector<String> data = new Vector<>();
-                data.add(productName.getText().toString());
-                data.add(priceZloty.getText().toString());
-                data.add(priceGrosz.getText().toString());
+                String kProductName = productName.getText().toString();
 
-                db.insertData(DatabaseHelper.l_TABLE_NAME, data);
+                int kPriceZl = 0;
+                try {
+                    kPriceZl = Integer.parseInt(priceZloty.getText().toString());
+                }catch(NumberFormatException ex) {
 
-                Intent main = new Intent(AddProductActivity.this, ShoppingList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                String msg = "Product added: " + data.get(0) + " " + Integer.parseInt(data.get(1)) + "." + Integer.parseInt(data.get(2)) + "zl";
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                }
 
-                startActivity(main);
-                break;
+                if (!kProductName.matches("")){
+                    if (kPriceZl == 0){
+                        Toast.makeText(this, "Wprowadz cene produktu", Toast.LENGTH_SHORT).show();
+                    }else {
+                        data.add(kProductName);
+                        data.add(priceZloty.getText().toString());
+                        data.add(priceGrosz.getText().toString());
+
+                        String msg = "Product added: " + data.get(0) + " " + Integer.parseInt(data.get(1)) + "." + Integer.parseInt(data.get(2)) + "zl";
+                        db.insertData(DatabaseHelper.l_TABLE_NAME, data);
+                        Intent main = new Intent(AddProductActivity.this, ShoppingList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        startActivity(main);
+                        break;
+
+                    }
+                }else {
+                    Toast.makeText(this, "Wprowadz nazwe produktu", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
         }
     }
 }

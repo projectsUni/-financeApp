@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -131,9 +132,19 @@ public class DatabaseHelper extends SQLiteOpenHelper
             cursor.moveToFirst();
             while(!cursor.isAfterLast()) {
                 String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_1));
-                int priceZL = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_2)));
-                int priceGR = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_3)));
+                int priceZL = 0;
+                int priceGR = 0;
                 int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_0)));
+
+                String msg = "Błąd dla ID: " + ID;
+                try{
+                     priceZL = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_2)));
+                     priceGR = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.l_COL_3)));
+                }catch(NumberFormatException ex) {
+                    //
+                }
+
+
 
                 productsData.add(new productRow(name, priceZL, priceGR, ID)); //add the item
                 cursor.moveToNext();
