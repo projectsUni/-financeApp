@@ -169,14 +169,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
             cursor.moveToFirst();
             while(!cursor.isAfterLast()) {
 
-                String name1 = cursor.getString(cursor.getColumnIndex(DatabaseHelper.i_COL_2));
+                String name1 = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_2));
                 String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_3));
                 String fullPriceString = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_4));
                 String date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_5));
                 double fullPrice = Double.parseDouble(fullPriceString.replaceAll(",", "."));
 
                 int priceZL = (int)fullPrice;
-                int priceGR = (int)fullPrice-priceZL;
+                int priceGR = (int)((fullPrice-priceZL)*100);
 
                 //priceGR -= priceZL;
                 //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));
@@ -211,7 +211,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 double fullPrice = Double.parseDouble(fullPriceString.replaceAll(",", "."));
 
                 int priceZL = (int)fullPrice;
-                int priceGR = (int)fullPrice-priceZL;
+                int priceGR = (int)((fullPrice-priceZL)*100);
 
                 //priceGR -= priceZL;
                 //int ID = Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.e_COL_1)));

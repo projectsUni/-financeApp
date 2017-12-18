@@ -25,7 +25,7 @@ public class displayIncome extends AppCompatActivity {
 
     public void buttonClicked()
     {
-        Intent intent = new Intent(this, ShowGraph.class);
+        Intent intent = new Intent(this, displayIncome.class);
         startActivity(intent);
     }
 

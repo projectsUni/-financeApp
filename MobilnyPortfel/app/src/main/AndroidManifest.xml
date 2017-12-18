@@ -41,7 +41,6 @@
         <activity android:name=".Daily" />
         <activity android:name=".Monthly" />
         <activity android:name=".Yearly" />
-        <activity android:name=".ShowGraph"></activity>
     </application>
 
 </manifest>

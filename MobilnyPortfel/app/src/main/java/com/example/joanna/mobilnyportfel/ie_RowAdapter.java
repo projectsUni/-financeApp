@@ -52,6 +52,8 @@ public class ie_RowAdapter extends ArrayAdapter<productRow> {
         productRow object = data.get(position);
         holder.prName1.setText(object.prName1);
         holder.prName.setText(object.prName);
+        //float fullPrice = object.priceZL + (float)object.priceGR / 100;
+
         holder.zlote.setText(Integer.toString(object.priceZL));
         holder.grosze.setText(Integer.toString(object.priceGR));
         holder.date.setText(object.getDate());

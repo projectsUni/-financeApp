@@ -49,9 +49,12 @@ public class sl_RowAdapter extends ArrayAdapter <productRow> {
         }
 
         productRow object = data.get(position);
+        float fullPrice = object.priceZL + (float)object.priceGR / 100;
+
         holder.prName.setText(object.prName);
-        holder.zlote.setText(Integer.toString(object.priceZL));
-        holder.grosze.setText(Integer.toString(object.priceGR));
+        holder.zlote.setText(Float.toString(fullPrice));
+        //holder.grosze.setText(Integer.toString(object.priceGR));
+
 
         return row;
     }
