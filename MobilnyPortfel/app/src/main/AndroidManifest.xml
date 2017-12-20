@@ -11,14 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccountType">
+        <activity android:name=".AccountType"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Password" />
+        <activity android:name=".Password"
+            android:screenOrientation="portrait"/>
         <activity android:name=".EnterExpenses" />
         <activity android:name=".ExpensesCategory" />
         <activity android:name=".Menu" />

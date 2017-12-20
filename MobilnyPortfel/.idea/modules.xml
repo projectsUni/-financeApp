@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MobilnyPortfel.iml" filepath="$PROJECT_DIR$/MobilnyPortfel.iml" />
+      <module fileurl="file://E:\Projekt zespolowy elementy graficzne\000. GIT\Test2\-financeApp\MobilnyPortfel\MobilnyPortfel.iml" filepath="E:\Projekt zespolowy elementy graficzne\000. GIT\Test2\-financeApp\MobilnyPortfel\MobilnyPortfel.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Projekt zespolowy elementy graficzne\000. GIT\Test2\-financeApp\MobilnyPortfel\app\app.iml" filepath="E:\Projekt zespolowy elementy graficzne\000. GIT\Test2\-financeApp\MobilnyPortfel\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mysql-connector-java-5.1.44-bin/mysql-connector-java-5.1.44-bin.iml" filepath="$PROJECT_DIR$/mysql-connector-java-5.1.44-bin/mysql-connector-java-5.1.44-bin.iml" />
+      <module fileurl="file://E:\Projekt zespolowy elementy graficzne\000. GIT\Test2\-financeApp\MobilnyPortfel\mysql-connector-java-5.1.44-bin\mysql-connector-java-5.1.44-bin.iml" filepath="E:\Projekt zespolowy elementy graficzne\000. GIT\Test2\-financeApp\MobilnyPortfel\mysql-connector-java-5.1.44-bin\mysql-connector-java-5.1.44-bin.iml" />
     </modules>
   </component>
 </project>

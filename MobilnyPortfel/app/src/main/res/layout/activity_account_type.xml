@@ -6,59 +6,97 @@
     android:layout_height="match_parent"
     tools:context="com.example.joanna.mobilnyportfel.AccountType">
 
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity = "center_vertical">
-
-    <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center_vertical"
-    android:layout_alignParentLeft="true">
-
-    <Button
-        android:id="@+id/housewife"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Gospodyni domowa"
-       />
-
-    <Button
-        android:id="@+id/business"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:text="Przedsiębiorca"
-        />
-
-</LinearLayout>
-
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#000">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/powitalne_background" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
-        android:layout_alignParentRight="true">
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/housewife"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:paddingTop="30dp"
+                android:backgroundTint="@color/colorBlack"
+                android:drawableTop="@drawable/housewife_white"
+                android:text="Gospodyni domowa"
+                android:textColor="#fff"/>
+
+            <Button
+                android:id="@+id/business"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:paddingTop="30dp"
+                android:backgroundTint="@color/colorBlack"
+                android:drawableTop="@drawable/businessman_white"
+                android:text="Przedsiębiorca"
+                android:textColor="#fff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+
 
             <Button
                 android:id="@+id/student"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:backgroundTint="@android:color/holo_red_light"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:paddingTop="30dp"
+                android:backgroundTint="@color/colorBlack"
+                android:drawableTop="@drawable/student_white"
                 android:text="student"
-                 />
-            <Button
-            android:id="@+id/custom"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:backgroundTint="@android:color/holo_purple"
-            android:text="Ustawienia własne"
+                android:textColor="#fff"
                 />
 
 
-</LinearLayout>
-</RelativeLayout>
+
+            <Button
+                android:id="@+id/custom"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:paddingTop="30dp"
+                android:backgroundTint="@color/colorBlack"
+                android:drawableTop="@drawable/custom_white"
+                android:text="Ustawienia własne"
+                android:textColor="#fff" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
