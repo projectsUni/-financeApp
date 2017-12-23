@@ -14,4 +14,5 @@
     <color name="colorSecondaryLight">#5ADAE0</color>
 
     <color name="colorBlack">#1d1d1d</color>
+    <color name="colorBlack_Opacoty">#dc1d1d1d</color>
 </resources>

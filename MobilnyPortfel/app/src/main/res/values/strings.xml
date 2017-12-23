@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MobilnyPortfel</string>
+    <string name="app_name">MPortfel</string>
     <string name="title_activity_password">passwordActivity</string>
     <string name="title_activity_add_product">AddProductActivity</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
