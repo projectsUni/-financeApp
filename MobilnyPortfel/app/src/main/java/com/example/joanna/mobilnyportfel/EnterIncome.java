@@ -45,7 +45,7 @@ public class EnterIncome extends AppCompatActivity {
         data.add(category.getText().toString());
         String p = zl.getText().toString() + "," + gr.getText().toString();
         data.add(p);
-        String enteredDate = date.getYear() + "-" + date.getMonth() + "-" + date.getDayOfMonth();
+        String enteredDate = date.getYear() + "-" + (date.getMonth()+1) + "-" + date.getDayOfMonth();
         data.add(enteredDate);
         db.insertData("incomeTable", data);
 

@@ -6,8 +6,8 @@
     <color name="colorPrimaryLight2">#77C08F</color>
 
     <!--    Accent  Complementary  -->
-    <color name="colorAccent">#C61500</color>
-    <color name="colorAccentDark">#7A0D00</color>
+    <color name="colorAccent">#c61500</color>
+    <color name="colorAccentDark">#7a0d00</color>
 
     <!--    Secondary  -->
     <color name="colorSecondary">#11a6ad</color>
