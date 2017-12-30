@@ -3,11 +3,14 @@
     <!--    Primary  -->
     <color name="colorPrimary">#007a3b</color><!--Main Color-->
     <color name="colorPrimaryLight1">#25a25e</color>
+    <color name="colorPrimaryLight1_Opacity">#9625a25e</color>
     <color name="colorPrimaryLight2">#77C08F</color>
 
     <!--    Accent  Complementary  -->
     <color name="colorAccent">#c61500</color>
+    <color name="colorAccent_Opacity">#96c61500</color>
     <color name="colorAccentDark">#7a0d00</color>
+    <color name="colorAccentDark_Opacity">#967a0d00</color>
 
     <!--    Secondary  -->
     <color name="colorSecondary">#11a6ad</color>

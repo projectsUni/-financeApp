@@ -6,34 +6,56 @@
     android:layout_height="match_parent"
     tools:context="com.example.joanna.mobilnyportfel.Daily">
 
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/background" />
+
+    </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_vertical|center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Wybierz datę "
-            android:textSize = "25dp"/>
+            android:textSize = "25dp"
+            android:textColor="#fff"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="5dp" />
         <DatePicker
             android:id="@+id/chdate"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="120dp"
             android:backgroundTint="@android:color/holo_blue_light"
-            />
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="5dp" />
+
         <Button
             android:id="@+id/subButton"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:text="OK"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/colorAccentDark"
+            android:text="Wyświetl"
+            android:textColor="#fff" />
         <Space
             android:layout_width="match_parent"
             android:layout_height="5dp" />
@@ -44,6 +66,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:textColor="#fff"
 
             ></ListView>
 

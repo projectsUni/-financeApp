@@ -9,7 +9,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#000">
 
         <ImageView
             android:id="@+id/imageView"
@@ -143,10 +144,11 @@
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:backgroundTint="@color/colorPrimary"
             android:calendarTextColor="#fff"
             android:datePickerMode="spinner"
-            android:calendarViewShown="false" />
+            android:calendarViewShown="false"
+            android:background="@color/colorPrimaryLight1_Opacity"
+            />
 
         <Space
             android:layout_width="match_parent"

@@ -6,13 +6,33 @@
     android:layout_height="match_parent"
     tools:context="com.example.joanna.mobilnyportfel.SortData">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/background" />
+
+    </FrameLayout>
+
     <LinearLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
-        android:orientation="vertical"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical|center_horizontal"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -20,19 +40,19 @@
 
             <Button
                 android:id="@+id/daily"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:backgroundTint="@color/colorBlack_Opacoty"
                 android:text="dziennie"
-                android:backgroundTint="#54B2A1"
-                />
+                android:textColor="#fff"/>
 
             <Button
                 android:id="@+id/monthly"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:backgroundTint="@color/colorBlack_Opacoty"
                 android:text="miesięcznie"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:backgroundTint="#18B2DF"
-                />
+                android:textColor="#fff"/>
 
         </LinearLayout>
 
@@ -43,24 +63,22 @@
 
             <Button
                 android:id="@+id/yearly"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:backgroundTint="@color/colorBlack_Opacoty"
                 android:text="rocznie"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:backgroundTint="#3070DF"
+                android:textColor="#fff" />
 
-                />
             <Button
                 android:id="@+id/alldata"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:backgroundTint="@color/colorBlack_Opacoty"
                 android:text="wszystkie"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:backgroundTint="#3152DF"
-                />
+                android:textColor="#fff"/>
 
 
         </LinearLayout>
-
-
 
 
     </LinearLayout>
