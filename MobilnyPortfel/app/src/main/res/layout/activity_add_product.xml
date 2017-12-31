@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.joanna.mobilnyportfel.AddProductActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/background" />
+
+    </FrameLayout>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
-    android:padding="20dp" >
+    android:paddingTop="20dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
+
 
     <EditText
         android:id="@+id/productName"
@@ -15,6 +38,14 @@
 
         <requestFocus />
     </EditText>
+
+    <Button
+        android:id='@+id/expenseCategory'
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "Kategoria"
+        android:backgroundTint="@color/colorAccentDark"
+        android:textColor="#fff"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -42,19 +73,16 @@
 
     </LinearLayout>
 
-    <Button
-        android:id='@+id/expenseCategory'
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text = "Kategoria"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        />
 
     <Button
         android:id="@+id/add_record"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Dodaj" />
+        android:backgroundTint="@color/colorBlack"
+        android:text="Dodaj"
+        android:textColor="#fff" />
 
 </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

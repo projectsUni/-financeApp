@@ -21,6 +21,7 @@
                     android:text="TextView"
                     android:textSize="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="#fff"
                      />
                 <android.support.v4.widget.Space
                     android:layout_width="10dp"
@@ -31,7 +32,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:textColor="#fff"/>
             </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textColor="#fff"/>
 
 
 
@@ -55,7 +58,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textColor="#fff"/>
             <android.support.v4.widget.Space
                 android:layout_width="2dp"
                 android:layout_height="wrap_content" />
@@ -63,7 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=","
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textColor="#fff"/>
 
             <TextView
                 android:id="@+id/grosz"
@@ -72,7 +77,7 @@
                 android:text="TextView"
                 android:textSize="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                android:textColor="#fff"/>
 
 
         </LinearLayout>

@@ -142,11 +142,11 @@
         <DatePicker
             android:id="@+id/date"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:backgroundTint="@color/colorPrimary"
+            android:layout_height="120dp"
+            android:background="@color/colorPrimaryLight1_Opacity"
             android:calendarTextColor="#fff"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false" />
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
 
         <Space
             android:layout_width="match_parent"
