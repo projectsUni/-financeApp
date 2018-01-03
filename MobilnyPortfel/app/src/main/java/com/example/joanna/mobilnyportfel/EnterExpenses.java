@@ -42,18 +42,43 @@ public class EnterExpenses extends AppCompatActivity {
 
         Vector<String> data = new Vector<String>();
 
-        data.add(name.getText().toString());
-        data.add(category.getText().toString());
+        String exName = name.getText().toString();
+        String exCat = category.getText().toString();
+        String zlote = zl.getText().toString();
+        String grosze = gr.getText().toString();
 
-        String p = zl.getText().toString() + "," + gr.getText().toString();
-        data.add(p);
-        String enteredDate = date.getYear() + "-" + (date.getMonth()+1) + "-" + date.getDayOfMonth();
-        data.add(enteredDate);
-        db.insertData("expensesTable", data);
 
-        Toast.makeText(getApplicationContext(), "Dodane",Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, Menu.class);
-        startActivity(intent);
+        if (!exName.matches("")){
+            if (!exCat.matches("Kategoria")){
+                if (!zlote.matches("") && !grosze.matches("")){
+
+                    data.add(exName);
+                    data.add(exCat);
+
+                    String fullPrice = zlote + "," + grosze;
+                    data.add(fullPrice);
+                    String enteredDate = date.getYear() + "-" + (date.getMonth()+1) + "-" + date.getDayOfMonth();
+                    data.add(enteredDate);
+
+
+                    db.insertData("expensesTable", data);
+
+                    Toast.makeText(getApplicationContext(), "Dodane",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(this, Menu.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(this, "Wprowadź cene", Toast.LENGTH_SHORT).show();
+                }
+            }else {
+                Toast.makeText(this, "Wybierz kategorie", Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            Toast.makeText(this, "Wprowadz nazwę wydatku", Toast.LENGTH_SHORT).show();
+        }
+
+
+            //name, category, price,
+
     }
 
     @Override
